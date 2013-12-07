@@ -19,7 +19,8 @@ public class Player {
 
 	private ArrayList<Item> inventory = new ArrayList<Item>();
 
-	public Player(String theClass){
+	public Player(Room startingRoom, String theClass){
+		currentRoom = startingRoom;
 		myClass = theClass;
 		switch (myClass) {
 		case "thief":

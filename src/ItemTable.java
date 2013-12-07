@@ -6,6 +6,7 @@ public class ItemTable {
 
 	public ItemTable() {
 		itemMap = new HashMap<String, Item>();
+
 		itemMap.put("small_health_potion",  new Item_Buff("Small Health Potion", "Heals 20 health.", false, 20, false, "health"));
 		itemMap.put("small_strength_potion", new Item_Buff("Small Strength Potion", "Increases Strength stat by 20 until next room.", false, 20, true, "strength"));
 		itemMap.put("small_agility_potion", new Item_Buff("Small Agility Potion", "Increases Agility stat by 20 until next room.", false, 20, true, "agility"));
@@ -27,7 +28,6 @@ public class ItemTable {
 		itemMap.put("basic_fireball_spellbook", new Item_Weapon("Spellbook of Basic Fireball", "Low end spell that deals 15 damage", false, 15, true, false));
 		
 	}
-	
 	public Item getItem(String theItem) {
 		return itemMap.get(theItem);
 	}
