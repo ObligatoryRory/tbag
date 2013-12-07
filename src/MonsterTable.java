@@ -47,7 +47,3 @@ public class MonsterTable {
 		return monsterMap.get(theMonster);
 	}
 }
-
-
-
-
