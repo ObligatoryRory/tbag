@@ -24,7 +24,7 @@ public class ItemTable {
 		itemMap.put("yew_staff", new Item_Weapon("Yew Staff", "A moderately effective staff.", false, 20, false, false));
 		itemMap.put("iron_dagger", new Item_Weapon("Iron Dagger", "A moderately effective dagger", false, 25, true, false));
 		itemMap.put("iron_shortsword", new Item_Weapon("Iron Shortsword", "A moderately effective shortsword.", false, 30, true, false));
-		
+		itemMap.put("wooden_staff", new Item_Weapon("Wooden Staff", "Basically a twig that is slightly magical.", false, 10, false, true));
 		itemMap.put("basic_fireball_spellbook", new Item_Weapon("Spellbook of Basic Fireball", "Low end spell that deals 15 damage", false, 15, true, false));
 		
 	}

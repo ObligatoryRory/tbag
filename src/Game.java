@@ -69,38 +69,38 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	
 	
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		if(e.getSource() == btnWest){
 			myPlayer.goWest();
 			mainText.setText(("Currently at: " + myPlayer.getRoom().toString()));
@@ -137,7 +137,6 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -145,7 +144,7 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	/**
@@ -164,22 +163,99 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		ArrayList<Room> emptyRoom1 = new ArrayList<Room>();
 		ArrayList<Room> eastWing = new ArrayList<Room>();
 		ArrayList<Room> westWing = new ArrayList<Room>();
-		
+		ArrayList<Room> downStairsEast = new ArrayList<Room>();
+		ArrayList<Room> secretRoom = new ArrayList<Room>();
+		ArrayList<Room> stairWell = new ArrayList<Room>();
+		ArrayList<Room> deadGarden = new ArrayList<Room>();
+		ArrayList<Room> deadGarden1 = new ArrayList<Room>();
+		ArrayList<Room> eastTopFloors = new ArrayList<Room>();
+		ArrayList<Room> kitchen = new ArrayList<Room>();
+		ArrayList<Room> gardenShed = new ArrayList<Room>();
+		ArrayList<Room> diningRoom = new ArrayList<Room>();
+		ArrayList<Room> tunnelToLight = new ArrayList<Room>();
+		ArrayList<Room>tunnelToEscape = new ArrayList<Room>();
+		ArrayList<Room>theEscape = new ArrayList<Room>();
+		Room Escape = new Room ("the_escape", "YOU'VE SURVIVED!", closetItems, closetMonster, theEscape);
+		Room toEscape = new Room ("to_escape", "you found an exit.", closetItems, closetMonster, tunnelToEscape);
+		Room hallway = new Room ("hallway", "you continue down the corridor.", closetItems, closetMonster, tunnelToLight);
+		Room diningRoom1 = new Room ("dining_room", "you see a light.", closetItems, closetMonster, diningRoom);
+		Room gardenShed1 = new Room ("dinky_shed", "you run into a shed?", closetItems, closetMonster, gardenShed);
+		Room kitchen1 = new Room ("kitchen", "there is a burnt cat tail on the stove top",closetItems, closetMonster, kitchen);
+		Room eastTop = new Room ("top_floor", "you fall through a hole to your death.", closetItems, closetMonster, eastTopFloors);
+		Room deadGrotto1 = new Room ("dead_grotto", "you hear a howl and pee yourself, run!", closetItems, closetMonster, deadGarden1);
+		Room deadGrotto = new Room ("dead_grotto", "the moonlight reflects death, run back!", closetItems, closetMonster, deadGarden);
+		Room stairWell1 = new Room ("stair_well", "you feel stairs in the darkness", closetItems, closetMonster, stairWell);
+		Room room42 = new Room ("secret","You are the BASED God!", closetItems, closetMonster,secretRoom);
+		Room downStairsEast1 = new Room("down_east", "stumbling you grab a rail handle", eastWingItems, closetMonster, downStairsEast);
 		Room westWing1 = new Room ("west_wing", "a cold room with open windows.", westWingItems, closetMonster, westWing);
 		Room eastWing1 = new Room("wing", "you smell mold, there are stairs", eastWingItems, closetMonster, eastWing);
 		Room closet1 = new Room("closet", "you can't see.", closetItems, closetMonster, emptyRoom1);
 		Room closet = new Room("closet", "dark closet", closetItems, closetMonster, emptyRoom);
 		
-		westWing.add(null);//north
+		theEscape.add(eastTop);
+		theEscape.add(closet);
+		theEscape.add(closet);
+		theEscape.add(closet);
+		
+		tunnelToEscape.add(Escape);
+		tunnelToEscape.add(null);
+		tunnelToEscape.add(null);
+		tunnelToEscape.add(null);
+		
+		tunnelToLight.add(toEscape);  //north
+		tunnelToLight.add(null);  //east
+		tunnelToLight.add(diningRoom1); //south
+		tunnelToLight.add(null); //west
+		
+		diningRoom.add(hallway);//north
+		diningRoom.add(null);//east
+		diningRoom.add(kitchen1);//south
+		diningRoom.add(null);//west
+		
+		kitchen.add(diningRoom1);//north
+		kitchen.add(null);//east
+		kitchen.add(westWing1);//south
+		kitchen.add(null);//west
+		
+		deadGarden1.add(gardenShed1);//north
+		deadGarden1.add(westWing1);//east
+		deadGarden1.add(null);//south
+		deadGarden1.add(null);//west
+		
+		gardenShed.add(null);
+		gardenShed.add(null);
+		gardenShed.add(deadGrotto1);
+		gardenShed.add(null);
+		
+		westWing.add(kitchen1);//north
 		westWing.add(closet1);//east
 		westWing.add(null);//south
-		westWing.add(null);//west
+		westWing.add(deadGrotto1);//west
 		
-		eastWing.add(null);//north
-		eastWing.add(null);//east
+		eastTopFloors.add(closet);//north -death
+		eastTopFloors.add(closet);//east - death
+		eastTopFloors.add(closet);//south - death
+		eastTopFloors.add(closet);//west - death
+		
+		deadGarden.add(null);//north
+		deadGarden.add(null);//east
+		deadGarden.add(null);//south
+		deadGarden.add(eastWing1);//west
+		
+		stairWell.add(eastTop);//north
+		stairWell.add(null);//east
+		stairWell.add(eastWing1);//south
+		stairWell.add(null);//west
+		
+		eastWing.add(stairWell1);//north
+		eastWing.add(deadGrotto);//east
 		eastWing.add(null);//south
 		eastWing.add(closet1);//west
 		
+		downStairsEast.add(eastWing1);//upstairs technically north
+		downStairsEast.add(null);//east
+		downStairsEast.add(null);//south
+		downStairsEast.add(null);//west
 		
 		emptyRoom1.add(null);//north
 		emptyRoom1.add(eastWing1);//east
@@ -190,33 +266,35 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		emptyRoom.add(null);//east
 		emptyRoom.add(null);//south
 		emptyRoom.add(null);//west
-				
-
 		
+		secretRoom.add(null);//north
+		secretRoom.add(null);//east
+		secretRoom.add(null);//south
+		secretRoom.add(null);//west
+				
 		ArrayList<Room> rooms = new ArrayList<Room>();
-		rooms.add(closet);
-		rooms.add(closet1);
+		rooms.add(closet);//index 0
+		rooms.add(downStairsEast1);//index 1
+		rooms.add(westWing1);//index 2
+		rooms.add(room42); //index 3
 		double value;
 		value = Math.random();
 		int index;
 		index=0;
-		if(value > 0.5){
-			index=0;
-		}else{
-			index=1;
+		if(value > 0.5 && value != 0.42){
+			index=0; //most likely
+		}else if (value < 0.10){
+			index=1;//second most likely
+		}else if (value < 0.49 && value >.11 && value != 0.42){
+			index=2;//third
+		}else if (value == 0.42){
+			index=3;//"secret room" almost never possible
 		}
-		
-		System.out.print(value);
 //created an arraylist of the rooms
 //then made an if statement using a random number generator to spawn in unique area
 		Player thePlayer = new Player(rooms.get(index), "warrior");
 		Game theGame= new Game(thePlayer);	
 		System.out.print("Welcome to the Swagtastic Adventure of John Novak!");
 		
-		
 	}
-
-
-	
-
 }
