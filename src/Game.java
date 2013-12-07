@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,26 +24,27 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	public JButton btnWest= new JButton("W");
 	public JButton btnEast= new JButton("E");
 	public Player myPlayer = new Player(null, "random");
+	public JTextField entry = new JTextField("");
+	public JLabel mainText = new JLabel("whatever", SwingConstants.CENTER);
+	
 	
 	public Game(Player thePlayer){
 	myPlayer = thePlayer;
 	JFrame window = new JFrame();
+	mainText.setText("Currently at: " + myPlayer.getRoom().toString());
 	window.setVisible(true);
 	Dimension whatever = new Dimension(500,500);
 	window.setSize(whatever);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setLayout(new BorderLayout());
-	JLabel mainText = new JLabel("whatever", SwingConstants.CENTER);
 	
 	Dimension whatever2point0=new Dimension(300,300);
 	mainText.setSize(whatever2point0);
 	mainText.setVisible(true);
-	mainText.addKeyListener(this);
+	
 	JPanel Text = new JPanel();
 	Text.setSize(200,200);
 	Text.setLayout(new BorderLayout());
-	JButton btnNorth = new JButton("N");
-	JButton btnSouth = new JButton("S");
 	btnNorth.setSize(100,100);
 	btnSouth.setSize(100,100);
 	window.add(btnNorth, BorderLayout.NORTH);
@@ -50,14 +52,10 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	Text.add(mainText,BorderLayout.CENTER);
 	window.add(Text,BorderLayout.CENTER);
 	
-	JTextField entry=new JTextField("     ");
-	
 	Text.add(entry, BorderLayout.SOUTH);
 	entry.setSize(50,100);
 	
-	JButton btnEast = new JButton("E");
-	
-	JButton btnWest = new JButton("W");
+	entry.addKeyListener(this);
 	btnWest.setSize(100,100);
 	btnEast.setSize(100,100);
 	window.add(btnEast,BorderLayout.EAST);
@@ -105,12 +103,16 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		// TODO Auto-generated method stub
 		if(e.getSource() == btnWest){
 			myPlayer.goWest();
+			mainText.setText(("Currently at: " + myPlayer.getRoom().toString()));
 		}else if(e.getSource() == btnNorth){
 			myPlayer.goNorth();
+			mainText.setText(("Currently at: " + myPlayer.getRoom().toString()));
 		}else if(e.getSource() == btnSouth){
 			myPlayer.goSouth();
+			mainText.setText(("Currently at: " + myPlayer.getRoom().toString()));
 		}else if(e.getSource() == btnEast){
 			myPlayer.goEast();
+			mainText.setText(("Currently at: " + myPlayer.getRoom().toString()));
 		}
 		
 		
@@ -119,7 +121,14 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==10){
-			if(e)
+			System.out.println(entry.getText());
+			
+			if(entry.getText().toLowerCase()=="help"){
+			
+			}else if(entry.getText().compareTo("inventory")==0){
+					mainText.setText("<html>" + myPlayer.printInventory() + "</html>");
+					entry.setText("");
+			}	
 		}
 		
 	}
@@ -144,7 +153,29 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	 */
 	
 	public static void main(String[] args) {
-		Game theGame= new Game(new Player (null, "warrior"));
+		
+		MonsterTable mTable = new MonsterTable();
+		ArrayList<Item> closetItems = new ArrayList<Item>();
+		ArrayList<Monster> closetMonster = new ArrayList<Monster>();
+		closetMonster.add(mTable.getMonsters("green_slime"));
+		ArrayList<Room> emptyRoom = new ArrayList<Room>();
+		ArrayList<Room> emptyRoom1 = new ArrayList<Room>();
+		Room closet1 = new Room("closet", "dark closet2", closetItems, closetMonster, emptyRoom1);
+
+		
+		Room closet = new Room("closet", "dark closet", closetItems, closetMonster, emptyRoom);
+		emptyRoom1.add(null);
+		emptyRoom1.add(null);
+		emptyRoom1.add(closet);
+		emptyRoom1.add(null);
+		
+		emptyRoom.add(closet1);
+		emptyRoom.add(null);
+		emptyRoom.add(null);
+		emptyRoom.add(null);
+				
+		Player thePlayer = new Player(closet, "warrior");
+		Game theGame= new Game(thePlayer);
 	
 		
 		
@@ -153,12 +184,6 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		
 	}
 
-
-
-	
-
-
-	
 
 	
 

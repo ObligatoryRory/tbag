@@ -114,6 +114,11 @@ public class Player {
 		inventory.add(theItem);
 	}
 
+	public Room getRoom(){
+		return currentRoom;
+	}
+	
+	
 	public Item removeItem(Item theItem) {
 		int aItem = inventory.indexOf(theItem);
 		return inventory.remove(aItem);
