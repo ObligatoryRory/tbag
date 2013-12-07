@@ -33,9 +33,11 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setLayout(new BorderLayout());
 	JLabel mainText = new JLabel("whatever", SwingConstants.CENTER);
+	
 	Dimension whatever2point0=new Dimension(300,300);
 	mainText.setSize(whatever2point0);
 	mainText.setVisible(true);
+	mainText.addKeyListener(this);
 	JPanel Text = new JPanel();
 	Text.setSize(200,200);
 	Text.setLayout(new BorderLayout());
@@ -117,7 +119,7 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==10){
-			//do stuff
+			if(e)
 		}
 		
 	}
@@ -140,6 +142,7 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	/**
 	 * @param args
 	 */
+	
 	public static void main(String[] args) {
 		Game theGame= new Game(new Player ("Warrior"));
 	
