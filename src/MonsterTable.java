@@ -35,12 +35,12 @@ public class MonsterTable {
 		monsterMap.put("troll", new Monster(70, "Troll", "A disgusting beast, destroy it!", 30, aTrollItems));
 
 		ArrayList<Item>aGoblinShredderItems = new ArrayList<Item>(); //heavy goblin unit
-                aGoblinShredderItems.add(itemTable.getItem("iron_shortsword"));
-                monsterMap.put("goblin_shredder", new Monster(90, "Goblin Shredder","A goblin wearing equipment, ready for battle.", 22, aGoblinShredderItems));
+        aGoblinShredderItems.add(itemTable.getItem("iron_shortsword"));
+        monsterMap.put("goblin_shredder", new Monster(90, "Goblin Shredder","A goblin wearing equipment, ready for battle.", 22, aGoblinShredderItems));
 
-                ArrayList<Item>aRizzarkItems = new ArrayList<Item>(); //goblin boss
-                aRizzarkItems.add(itemTable.getItem(""));
-                monsterMap.put("rizzark", new Monster(120, "Rizzark", "A gobling boss!", 28, aRizzarkItems));
+        ArrayList<Item>aRizzarkItems = new ArrayList<Item>(); //goblin boss
+        aRizzarkItems.add(itemTable.getItem(""));
+        monsterMap.put("rizzark", new Monster(120, "Rizzark", "A gobling boss!", 28, aRizzarkItems));
 
 	}
 	public Monster getMonsters(String theMonster) {

@@ -160,19 +160,27 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		closetMonster.add(mTable.getMonsters("green_slime"));
 		ArrayList<Room> emptyRoom = new ArrayList<Room>();
 		ArrayList<Room> emptyRoom1 = new ArrayList<Room>();
+		ArrayList<Room> eastWing = new ArrayList<Room>();
+		
+		Room eastWing1 = new Room("wing", "a muggy old room", closetItems, closetMonster, eastWing);
 		Room closet1 = new Room("closet", "dark closet2", closetItems, closetMonster, emptyRoom1);
-
-		
 		Room closet = new Room("closet", "dark closet", closetItems, closetMonster, emptyRoom);
-		emptyRoom1.add(null);
-		emptyRoom1.add(null);
-		emptyRoom1.add(closet);
-		emptyRoom1.add(null);
 		
-		emptyRoom.add(closet1);
-		emptyRoom.add(null);
-		emptyRoom.add(null);
-		emptyRoom.add(null);
+		eastWing.add(null);//north
+		eastWing.add(null);//east
+		eastWing.add(null);//south
+		eastWing.add(closet1);//west
+		
+		
+		emptyRoom1.add(null);//north
+		emptyRoom1.add(eastWing1);//east
+		emptyRoom1.add(closet);//south
+		emptyRoom1.add(null);//west
+		
+		emptyRoom.add(closet1);//north
+		emptyRoom.add(null);//east
+		emptyRoom.add(null);//south
+		emptyRoom.add(null);//west
 				
 		Player thePlayer = new Player(closet, "warrior");
 		Game theGame= new Game(thePlayer);
