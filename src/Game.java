@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox.KeySelectionManager;
-
+import java.util.Random;
 
 public class Game extends JFrame implements MouseListener, KeyListener {
 	public JButton btnNorth= new JButton("N");
@@ -156,15 +156,24 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		
 		MonsterTable mTable = new MonsterTable();
 		ArrayList<Item> closetItems = new ArrayList<Item>();
+		ArrayList<Item> eastWingItems = new ArrayList<Item>();
+		ArrayList<Item> westWingItems = new ArrayList<Item>();
 		ArrayList<Monster> closetMonster = new ArrayList<Monster>();
 		closetMonster.add(mTable.getMonsters("green_slime"));
 		ArrayList<Room> emptyRoom = new ArrayList<Room>();
 		ArrayList<Room> emptyRoom1 = new ArrayList<Room>();
 		ArrayList<Room> eastWing = new ArrayList<Room>();
+		ArrayList<Room> westWing = new ArrayList<Room>();
 		
-		Room eastWing1 = new Room("wing", "a muggy old room", closetItems, closetMonster, eastWing);
-		Room closet1 = new Room("closet", "dark closet2", closetItems, closetMonster, emptyRoom1);
+		Room westWing1 = new Room ("west_wing", "a cold room with open windows.", westWingItems, closetMonster, westWing);
+		Room eastWing1 = new Room("wing", "you smell mold, there are stairs", eastWingItems, closetMonster, eastWing);
+		Room closet1 = new Room("closet", "you can't see.", closetItems, closetMonster, emptyRoom1);
 		Room closet = new Room("closet", "dark closet", closetItems, closetMonster, emptyRoom);
+		
+		westWing.add(null);//north
+		westWing.add(closet1);//east
+		westWing.add(null);//south
+		westWing.add(null);//west
 		
 		eastWing.add(null);//north
 		eastWing.add(null);//east
@@ -175,18 +184,33 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		emptyRoom1.add(null);//north
 		emptyRoom1.add(eastWing1);//east
 		emptyRoom1.add(closet);//south
-		emptyRoom1.add(null);//west
+		emptyRoom1.add(westWing1);//west
 		
 		emptyRoom.add(closet1);//north
 		emptyRoom.add(null);//east
 		emptyRoom.add(null);//south
 		emptyRoom.add(null);//west
 				
-		Player thePlayer = new Player(closet, "warrior");
-		Game theGame= new Game(thePlayer);
-	
+
 		
+		ArrayList<Room> rooms = new ArrayList<Room>();
+		rooms.add(closet);
+		rooms.add(closet1);
+		double value;
+		value = Math.random();
+		int index;
+		index=0;
+		if(value > 0.5){
+			index=0;
+		}else{
+			index=1;
+		}
 		
+		System.out.print(value);
+//created an arraylist of the rooms
+//then made an if statement using a random number generator to spawn in unique area
+		Player thePlayer = new Player(rooms.get(index), "warrior");
+		Game theGame= new Game(thePlayer);	
 		System.out.print("Welcome to the Swagtastic Adventure of John Novak!");
 		
 		
