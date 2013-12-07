@@ -9,7 +9,6 @@ public class MonsterTable {
 	public MonsterTable() {
 		monsterMap = new HashMap<String, Monster>();
 		itemTable = new ItemTable();
-<<<<<<< HEAD
 
 		ArrayList<Item> aGreenSlimeItems = new ArrayList<Item>();
 		aGreenSlimeItems.add(itemTable.getItem("small_health_potion"));

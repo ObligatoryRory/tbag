@@ -22,7 +22,7 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	public JButton btnSouth= new JButton("S");
 	public JButton btnWest= new JButton("W");
 	public JButton btnEast= new JButton("E");
-	public Player myPlayer = new Player("random");
+	public Player myPlayer = new Player(null, "random");
 	
 	public Game(Player thePlayer){
 	myPlayer = thePlayer;
@@ -141,7 +141,7 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Game theGame= new Game(new Player ("Warrior"));
+		Game theGame= new Game(new Player (null, "warrior"));
 	
 		
 		
