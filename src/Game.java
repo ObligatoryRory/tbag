@@ -123,12 +123,35 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		if(e.getKeyCode()==10){
 			System.out.println(entry.getText());
 			
-			if(entry.getText().toLowerCase()=="help"){
-			
+			if(entry.getText().compareTo("help")==0){
+					mainText.setText("<html>" + "Type inventory to display inventory.  Type class to display class." +
+					"  Type health to display current health.  Type 'current room' to display the current room." + "</html>");
+					entry.setText("");
 			}else if(entry.getText().compareTo("inventory")==0){
 					mainText.setText("<html>" + myPlayer.printInventory() + "</html>");
 					entry.setText("");
-			}	
+			}else if(entry.getText().compareTo("class")==0){
+					mainText.setText("<html>" + myPlayer.getJob()+ "</html>");
+					entry.setText("");
+			}else if(entry.getText().compareTo("health")==0){
+					mainText.setText("<html>" + myPlayer.getHealth() + "</html>");
+					entry.setText("");
+			}else if (entry.getText().compareTo("strength")==0){
+					mainText.setText("<html>" + myPlayer.getStrength() + "</html>");
+					entry.setText("");
+			}else if (entry.getText().compareTo("intelligence")==0){
+					mainText.setText("<html>" + myPlayer.getIntel() + "</html>");
+					entry.setText("");
+			}else if (entry.getText().compareTo("agility")==0){
+					mainText.setText("<html>" + myPlayer.getAgility() + "</html>");
+					entry.setText("");
+			}else if (entry.getText().compareTo("luck")==0){
+					mainText.setText("<html>" + myPlayer.getLuck() + "</html>");
+					entry.setText("");
+		    }else if (entry.getText().compareTo("current room")==0){
+		    		mainText.setText("<html>" + myPlayer.getRoom() + "</html>");
+		    		entry.setText("");
+		    }
 		}
 		
 	}
@@ -306,7 +329,7 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		}
 //created an arraylist of the rooms
 //then made an if statement using a random number generator to spawn in unique area
-		Player thePlayer = new Player(rooms.get(index), "warrior");
+		Player thePlayer = new Player(rooms.get(index), "archer");
 		Game theGame= new Game(thePlayer);	
 		System.out.print("Welcome to the Swagtastic Adventure of John Novak!");
 		

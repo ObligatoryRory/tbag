@@ -56,10 +56,24 @@ public class Player {
 			inventory.add(new Item_Weapon("Bronze Short-Sword", "A dull weapon for a dull warrior.", false, 20, true, true));
 
 			break;
+		case "archer":
+			currentHealth = 65;
+			maxHealth = currentHealth;
+			strength = 70;
+			luck = 50;
+			intel = 30;
+			agility = 80;
+
+			inventory.add(new Item_Weapon("Wooden Bow", "Don't pull too hard, the wood isn't strong. ", false, 15, true, true));
+
+			break;
 		}
 		myBuffs = new HashMap<String, Integer>();
 	}
 
+	public String getJob(){
+		return myClass;
+	}
 	public int getMaxHealth(){
 		return maxHealth;
 	}
@@ -202,7 +216,6 @@ public class Player {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 

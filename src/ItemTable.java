@@ -26,7 +26,7 @@ public class ItemTable {
 		itemMap.put("iron_shortsword", new Item_Weapon("Iron Shortsword", "A moderately effective shortsword.", false, 30, true, false));
 		itemMap.put("wooden_staff", new Item_Weapon("Wooden Staff", "Basically a twig that is slightly magical.", false, 10, false, true));
 		itemMap.put("basic_fireball_spellbook", new Item_Weapon("Spellbook of Basic Fireball", "Low end spell that deals 15 damage", false, 15, true, false));
-		
+		itemMap.put("wooden_bow", new Item_Weapon("Wooden Bow", "Don't pull too hard, the wood isn't strong. ", false, 15, true, true));
 	}
 	public Item getItem(String theItem) {
 		return itemMap.get(theItem);
