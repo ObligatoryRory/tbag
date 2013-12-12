@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,9 +24,10 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 	public JButton btnWest= new JButton("W");
 	public JButton btnEast= new JButton("E");
 	public Player myPlayer = new Player(null, "random");
-	public JTextField entry = new JTextField("");
+	public static JTextField entry = new JTextField("welcome");
 	public JLabel mainText = new JLabel("whatever", SwingConstants.CENTER);
 	
+
 	
 	public Game(Player thePlayer){
 	myPlayer = thePlayer;
@@ -117,41 +118,43 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		
 		
 	}
-	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==10){
 			System.out.println(entry.getText());
-			
-			if(entry.getText().compareTo("help")==0){
+						
+			if(entry.getText().toLowerCase().compareTo("help")==0){
 					mainText.setText("<html>" + "Type inventory to display inventory.  Type class to display class." +
 					"  Type health to display current health.  Type 'current room' to display the current room." + "</html>");
 					entry.setText("");
-			}else if(entry.getText().compareTo("inventory")==0){
+			}else if(entry.getText().toLowerCase().compareTo("inventory")==0){
 					mainText.setText("<html>" + myPlayer.printInventory() + "</html>");
 					entry.setText("");
-			}else if(entry.getText().compareTo("class")==0){
+			}else if(entry.getText().toLowerCase().compareTo("class")==0){
 					mainText.setText("<html>" + myPlayer.getJob()+ "</html>");
 					entry.setText("");
-			}else if(entry.getText().compareTo("health")==0){
+			}else if(entry.getText().toLowerCase().compareTo("health")==0){
 					mainText.setText("<html>" + myPlayer.getHealth() + "</html>");
 					entry.setText("");
-			}else if (entry.getText().compareTo("strength")==0){
+			}else if (entry.getText().toLowerCase().compareTo("strength")==0){
 					mainText.setText("<html>" + myPlayer.getStrength() + "</html>");
 					entry.setText("");
-			}else if (entry.getText().compareTo("intelligence")==0){
+			}else if (entry.getText().toLowerCase().compareTo("intelligence")==0){
 					mainText.setText("<html>" + myPlayer.getIntel() + "</html>");
 					entry.setText("");
-			}else if (entry.getText().compareTo("agility")==0){
+			}else if (entry.getText().toLowerCase().compareTo("agility")==0){
 					mainText.setText("<html>" + myPlayer.getAgility() + "</html>");
 					entry.setText("");
-			}else if (entry.getText().compareTo("luck")==0){
+			}else if (entry.getText().toLowerCase().compareTo("luck")==0){
 					mainText.setText("<html>" + myPlayer.getLuck() + "</html>");
 					entry.setText("");
-		    }else if (entry.getText().compareTo("current room")==0){
+		    }else if (entry.getText().toLowerCase().compareTo("current room")==0){
 		    		mainText.setText("<html>" + myPlayer.getRoom() + "</html>");
 		    		entry.setText("");
+		    }else if (entry.getText().toLowerCase().compareTo("exit")==0){
+		    		System.exit(0);//allows user to quit
 		    }
+		
 		}
 		
 	}
@@ -163,16 +166,11 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		
 	}
 
-
-
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		
-		
+	
 	}
-	/**
-	 * @param args
-	 */
+
 	
 	public static void main(String[] args) {
 		
@@ -228,16 +226,16 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		Room eastWing1 = new Room("wing", "you smell mold, there are stairs", eastWingItems, closetMonster, eastWing);
 		Room closet1 = new Room("closet", "you can't see.", emptyRoom1Items, closetMonster, emptyRoom1);
 		Room closet = new Room("closet", "dark closet", closetItems, closetMonster, emptyRoom);
+
+		theEscape.add(eastTop);//north
+		theEscape.add(closet);//east
+		theEscape.add(closet);//south
+		theEscape.add(closet);//west
 		
-		theEscape.add(eastTop);
-		theEscape.add(closet);
-		theEscape.add(closet);
-		theEscape.add(closet);
-		
-		tunnelToEscape.add(Escape);
-		tunnelToEscape.add(null);
-		tunnelToEscape.add(null);
-		tunnelToEscape.add(null);
+		tunnelToEscape.add(Escape);//north
+		tunnelToEscape.add(null);//east
+		tunnelToEscape.add(null);//south
+		tunnelToEscape.add(null);//west
 		
 		tunnelToLight.add(toEscape);  //north
 		tunnelToLight.add(null);  //east
@@ -259,10 +257,10 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		deadGarden1.add(null);//south
 		deadGarden1.add(null);//west
 		
-		gardenShed.add(null);
-		gardenShed.add(null);
-		gardenShed.add(deadGrotto1);
-		gardenShed.add(null);
+		gardenShed.add(null);//north
+		gardenShed.add(null);//east
+		gardenShed.add(deadGrotto1);//south
+		gardenShed.add(null);//west
 		
 		westWing.add(kitchen1);//north
 		westWing.add(closet1);//east
@@ -314,6 +312,8 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		rooms.add(downStairsEast1);//index 1
 		rooms.add(westWing1);//index 2
 		rooms.add(room42); //index 3
+		
+		
 		double value;
 		value = Math.random();
 		int index;
@@ -327,11 +327,38 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		}else if (value == 0.42){
 			index=3;//"secret room" almost never possible
 		}
+
+
+		String chosenClass = JOptionPane.showInputDialog("choose a class");
+		chosenClass=chosenClass.toLowerCase();  //forces input to be lower case 
+		
+		//below I have inserted a way for user to choose a "RANDOM" class
+		if(chosenClass != "thief" || chosenClass != "mage" || chosenClass != "warrior" || chosenClass != "archer"){
+			if (value > .75){
+				chosenClass = "warrior";
+			}else if (value >.50 && value <= .74){
+				chosenClass = "mage";
+			}else if (value > .25 && value <= .49){
+				chosenClass = "archer";
+			}else if (value > .00 && value <= .24){
+				chosenClass = "thief";
+			}
+		
+		
+		
+			Player thePlayer = new Player(rooms.get(index), chosenClass);
+			Game theGame= new Game(thePlayer);
+			System.out.print("Welcome to the Swagtastic Adventure of John Novak!");			
+		}
 //created an arraylist of the rooms
 //then made an if statement using a random number generator to spawn in unique area
-		Player thePlayer = new Player(rooms.get(index), "archer");
-		Game theGame= new Game(thePlayer);	
-		System.out.print("Welcome to the Swagtastic Adventure of John Novak!");
-		
+
 	}
 }
+
+
+
+
+
+
+

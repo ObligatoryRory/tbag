@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Main1 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		MonsterTable mTable = new MonsterTable();
 		ArrayList<Item> closetItems = new ArrayList<Item>();
 		ArrayList<Monster> closetMonster = new ArrayList<Monster>();

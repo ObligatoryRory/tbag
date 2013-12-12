@@ -21,12 +21,19 @@ public class ItemTable {
 		itemMap.put("large_intel_potion",new Item_Buff("Large Intelligence Potion", "Increases Intelligence stat by 70 until next room.", false, 70, true, "intel"));
 		itemMap.put("large_luck_potion",new Item_Buff("Large Luck Potion", "Increases Luck stat by 70 until next room.", false, 70, true, "intel"));
 		
-		itemMap.put("yew_staff", new Item_Weapon("Yew Staff", "A moderately effective staff.", false, 20, false, false));
+		itemMap.put("yew_staff", new Item_Weapon("Yew Staff", "A moderately effective staff.", false, 35, false, false));
 		itemMap.put("iron_dagger", new Item_Weapon("Iron Dagger", "A moderately effective dagger", false, 25, true, false));
 		itemMap.put("iron_shortsword", new Item_Weapon("Iron Shortsword", "A moderately effective shortsword.", false, 30, true, false));
+		itemMap.put("steel_shortsword", new Item_Weapon("Steel Shortsword", "A great blade, for a great warrior.", false, 50, true, false));
 		itemMap.put("wooden_staff", new Item_Weapon("Wooden Staff", "Basically a twig that is slightly magical.", false, 10, false, true));
 		itemMap.put("basic_fireball_spellbook", new Item_Weapon("Spellbook of Basic Fireball", "Low end spell that deals 15 damage", false, 15, true, false));
+		itemMap.put("medium_fireball_spellbook", new Item_Weapon("Spellbook of Advanced Fireball", "Decently powerfull spell", false, 40, true, false));
 		itemMap.put("wooden_bow", new Item_Weapon("Wooden Bow", "Don't pull too hard, the wood isn't strong. ", false, 15, true, true));
+		itemMap.put("oak_bow", new Item_Weapon("Oak Bow", "Somewhat sturdy, give it a good pull!", false, 28, true, true));
+		itemMap.put("maple_bow", new Item_Weapon("Maple Bow", "A beautiful bow.", false, 45, true, true));
+
+		
+		
 	}
 	public Item getItem(String theItem) {
 		return itemMap.get(theItem);
