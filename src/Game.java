@@ -333,26 +333,35 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		chosenClass=chosenClass.toLowerCase();  //forces input to be lower case 
 		
 		//below I have inserted a way for user to choose a "RANDOM" class
-		if(chosenClass != "thief" || chosenClass != "mage" || chosenClass != "warrior" || chosenClass != "archer"){
-			if (value > .75){
-				chosenClass = "warrior";
-			}else if (value >.50 && value <= .74){
-				chosenClass = "mage";
-			}else if (value > .25 && value <= .49){
+			if(chosenClass.equals("archer")){
 				chosenClass = "archer";
-			}else if (value > .00 && value <= .24){
+			}else if(chosenClass.equals("mage")){
+				chosenClass = "mage";
+			}else if(chosenClass.equals("thief")){
 				chosenClass = "thief";
-			}
+			}else if(chosenClass.equals("warrior")){
+				chosenClass = "warrior";
+			}else{
+				if (value > .75){
+					chosenClass = "warrior";
+				}else if (value >.50 && value <= .74){
+					chosenClass = "mage";
+				}else if (value > .25 && value <= .49){
+					chosenClass = "archer";
+				}else if (value > .00 && value <= .24){
+					chosenClass = "thief";
+			}//changed to .equals to check to make sure objects are equal.
+				
 		
 		
 		
-			Player thePlayer = new Player(rooms.get(index), chosenClass);
-			Game theGame= new Game(thePlayer);
-			System.out.print("Welcome to the Swagtastic Adventure of John Novak!");			
+			
 		}
 //created an arraylist of the rooms
 //then made an if statement using a random number generator to spawn in unique area
-
+			Player thePlayer = new Player(rooms.get(index), chosenClass);
+			Game theGame= new Game(thePlayer);
+			System.out.print("Welcome to the Swagtastic Adventure of John Novak!");
 	}
 }
 
