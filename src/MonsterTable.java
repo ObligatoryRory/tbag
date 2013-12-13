@@ -18,13 +18,13 @@ public class MonsterTable {
 		/*  Warrior will have the easiest time with low drops, archer will have easiest time with medium drops, while mage will have easiest time with the high drops
 		 * The following if statement allows user to get random drops, so there will not be a level with just melee/range/mage drops
 		 * Will eventually create a method that will randomly assign med-high monsters the ability to have drops of the level below it
-		 * this will allow disallow straight up monster farming as well as increase difficulty of the game
+		 * this will disallow straight up monster farming as well as increase difficulty of the game
 		 * currently have no way of refreshing the item assigned to the value.  thus although the drop may be random -- the drop per value will not change
 		 */
         
         if (value >= 7){
 			lowDrop = "iron_shortsword";
-			medDrop = "maple_bow";
+			medDrop = "willow_bow";
 			highDrop = "";  //mage drop
 		}else if (value < 7 && value >= 5){
 			lowDrop = "basic_fireball_spellbook";

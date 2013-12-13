@@ -25,13 +25,16 @@ public class ItemTable {
 		itemMap.put("iron_dagger", new Item_Weapon("Iron Dagger", "A moderately effective dagger", false, 25, true, false));
 		itemMap.put("iron_shortsword", new Item_Weapon("Iron Shortsword", "A moderately effective shortsword.", false, 30, true, false));
 		itemMap.put("steel_shortsword", new Item_Weapon("Steel Shortsword", "A great blade, for a great warrior.", false, 50, true, false));
+		itemMap.put("steel_longsword", new Item_Weapon("Steel Longsword", "A long blade made out of steel", false, 90, true, false ));
 		itemMap.put("wooden_staff", new Item_Weapon("Wooden Staff", "Basically a twig that is slightly magical.", false, 10, false, true));
 		itemMap.put("basic_fireball_spellbook", new Item_Weapon("Spellbook of Basic Fireball", "Low end spell that deals 15 damage", false, 15, true, false));
 		itemMap.put("medium_fireball_spellbook", new Item_Weapon("Spellbook of Advanced Fireball", "Decently powerfull spell", false, 40, true, false));
+		itemMap.put("advanced_fireball_spellbook", new Item_Weapon("Spellbook of Mastering the Fire", "Very powerfull spell", false, 115, true, false));
 		itemMap.put("wooden_bow", new Item_Weapon("Wooden Bow", "Don't pull too hard, the wood isn't strong. ", false, 15, true, true));
 		itemMap.put("oak_bow", new Item_Weapon("Oak Bow", "Somewhat sturdy, give it a good pull!", false, 28, true, true));
-		itemMap.put("maple_bow", new Item_Weapon("Maple Bow", "A beautiful bow.", false, 45, true, true));
-
+		itemMap.put("willow_bow", new Item_Weapon("Willow Bow", "A powerful bow made from willow wood.", false, 45, true, true));
+		itemMap.put("maple_bow", new Item_Weapon("Maple Bow", "A beautiful bow.", false, 70, true, true));
+		itemMap.put("yew_bow", new Item_Weapon("Yew Bow", "A very sturdy bow.", false, 100, true, true));
 		
 		
 	}
@@ -39,3 +42,4 @@ public class ItemTable {
 		return itemMap.get(theItem);
 	}
 }
+ 
