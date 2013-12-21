@@ -20,6 +20,7 @@ public class MonsterTable {
 		 * Will eventually create a method that will randomly assign med-high monsters the ability to have drops of the level below it
 		 * this will disallow straight up monster farming as well as increase difficulty of the game
 		 * currently have no way of refreshing the item assigned to the value.  thus although the drop may be random -- the drop per value will not change
+		 * add this to a method and recall it 
 		 */
         
         if (value >= 7){
@@ -46,7 +47,7 @@ public class MonsterTable {
 		
 		ArrayList<Item> aGoblinItems = new ArrayList<Item>();
 		aGoblinItems.add(itemTable.getItem("small_intel_potion"));
-		aGoblinItems.add(itemTable.getItem(lowDrop));
+		aGoblinItems.add(itemTable.getItem(randomDrop.lowDrop));
 		monsterMap.put("goblin", new Monster(50, "Goblin", "A dumb, oblivious goblin, kill it for a surprise!", 10, aGoblinItems));
 
         ArrayList<Item>aGoblinArcherItems = new ArrayList<Item>();//low level goblin archer

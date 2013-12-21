@@ -65,7 +65,7 @@ public class Player {
 			agility = 80;
 
 			inventory.add(new Item_Weapon("Wooden Bow", "Don't pull too hard, the wood isn't strong. ", false, 15, true, true));
-
+			
 			break;
 		}
 		myBuffs = new HashMap<String, Integer>();
