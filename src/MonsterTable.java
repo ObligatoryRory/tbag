@@ -10,11 +10,9 @@ public class MonsterTable {
 	private ItemTable itemTable;
 
 	
-	public static String drop(){
+	public static String lDrop(){
 		double value = Math.floor((Math.random()*10)+1);
         String lowDrop = ""; 
-        String medDrop = ""; 
-        String highDrop = ""; 
         
 		/*  Warrior will have the easiest time with low drops, archer will have easiest time with medium drops, while mage will have easiest time with the high drops
 		 * The following if statement allows user to get random drops, so there will not be a level with just melee/range/mage drops
@@ -26,59 +24,55 @@ public class MonsterTable {
         
         if (value >= 7){
 			lowDrop = "iron_shortsword";
-			medDrop = "willow_bow";
-			highDrop = "";  //mage drop
 		}else if (value < 7 && value >= 5){
 			lowDrop = "basic_fireball_spellbook";
-			medDrop = "steel_shortsword";//warrior drop
-			highDrop = "";//archer drop
 		}else if (value < 5 && value > 2){
 			lowDrop = "oak_bow";
-			medDrop = "medium_fireball_spellbook";
-			highDrop = "";//warrior drop
 		}else{  //null set unless another class is created, in which need to rebalance
 			lowDrop = "";
+		}
+		return lowDrop;
+	}
+	public static String mDrop(){
+		double value = Math.floor((Math.random()*10)+1);
+        String medDrop = "";  
+        if (value >= 7){
+			medDrop = "willow_bow";
+		}else if (value < 7 && value >= 5){
+			medDrop = "steel_shortsword";//warrior drop
+		}else if (value < 5 && value > 2){
+			medDrop = "medium_fireball_spellbook";
+		}else{  //null set unless another class is created, in which need to rebalance
 			medDrop = "";
+		}
+		return medDrop;
+	}
+	
+	public static String hDrop(){
+		double value = Math.floor((Math.random()*10)+1);
+        String highDrop = ""; 
+        if (value >= 7){
+			highDrop = "";  //mage drop
+		}else if (value < 7 && value >= 5){
+			highDrop = "";//archer drop
+		}else if (value < 5 && value > 2){
+			highDrop = "";//warrior drop
+		}else{  //null set unless another class is created, in which need to rebalance
 			highDrop = "";
 		}
-        
-        //need to make it return string array
+		return highDrop;
+	}
+	
+	public static String nullDrop(){
+		String nullDrop = "";
+		return nullDrop = "";
 	}
 	
 	public MonsterTable() {
 		monsterMap = new HashMap<String, Monster>();
 		itemTable = new ItemTable();
         
-		double value = Math.floor((Math.random()*10)+1);
-        String lowDrop = ""; 
-        String medDrop = ""; 
-        String highDrop = ""; 
-        
-		/*  Warrior will have the easiest time with low drops, archer will have easiest time with medium drops, while mage will have easiest time with the high drops
-		 * The following if statement allows user to get random drops, so there will not be a level with just melee/range/mage drops
-		 * Will eventually create a method that will randomly assign med-high monsters the ability to have drops of the level below it
-		 * this will disallow straight up monster farming as well as increase difficulty of the game
-		 * currently have no way of refreshing the item assigned to the value.  thus although the drop may be random -- the drop per value will not change
-		 * add this to a method and recall it 
-		 */
-        
-        if (value >= 7){
-			lowDrop = "iron_shortsword";
-			medDrop = "willow_bow";
-			highDrop = "";  //mage drop
-		}else if (value < 7 && value >= 5){
-			lowDrop = "basic_fireball_spellbook";
-			medDrop = "steel_shortsword";//warrior drop
-			highDrop = "";//archer drop
-		}else if (value < 5 && value > 2){
-			lowDrop = "oak_bow";
-			medDrop = "medium_fireball_spellbook";
-			highDrop = "";//warrior drop
-		}else{  //null set unless another class is created, in which need to rebalance
-			lowDrop = "";
-			medDrop = "";
-			highDrop = "";
-		}
+
        
 		ArrayList<Item> aGreenSlimeItems = new ArrayList<Item>();
 		aGreenSlimeItems.add(itemTable.getItem("small_health_potion"));
@@ -86,12 +80,11 @@ public class MonsterTable {
 		
 		ArrayList<Item> aGoblinItems = new ArrayList<Item>();
 		aGoblinItems.add(itemTable.getItem("small_intel_potion"));
-		Object randomDrop;
-		aGoblinItems.add(itemTable.getItem(lowDrop));
+		aGoblinItems.add(itemTable.getItem(lDrop()));
 		monsterMap.put("goblin", new Monster(50, "Goblin", "A dumb, oblivious goblin, kill it for a surprise!", 10, aGoblinItems));
 
         ArrayList<Item>aGoblinArcherItems = new ArrayList<Item>();//low level goblin archer
-        aGoblinArcherItems.add(itemTable.getItem(lowDrop));
+        aGoblinArcherItems.add(itemTable.getItem(lDrop()));
         monsterMap.put("goblin_archer", new Monster(40, "A goblin archer", "It weilds a low level crossbow!", 15, aGoblinArcherItems));
         
 		ArrayList<Item>aGoblinShredderItems = new ArrayList<Item>(); //heavy goblin unit

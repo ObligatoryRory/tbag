@@ -153,8 +153,10 @@ public class Game extends JFrame implements MouseListener, KeyListener {
 		    		entry.setText("");
 		    }else if (entry.getText().toLowerCase().compareTo("exit")==0){
 		    		System.exit(0);//allows user to quit
-		    }
-		
+		    }else if(entry.getText().toLowerCase().compareTo("stats")==0){
+		    		mainText.setText("<html>"  + " Luck: "+ myPlayer.getLuck() + " Agility: "+ myPlayer.getAgility() + " Strength: " + myPlayer.getStrength() +   " Health: " +  myPlayer.getHealth() + "</html>");
+		    		entry.setText("");
+		    } 		
 		}
 		
 	}
